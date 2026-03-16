@@ -7,28 +7,28 @@ export default function ProductCategories() {
       category: "Kitchen Accessories",
       description:
         "Heavy-duty stainless steel wire products and organizers.",
-      image: "/kitchen.jpg",
+      image: "/homepage/kitchen.jpg",
     },
     {
       title: "Soft Close",
       category: "Furniture Fittings",
       description:
         "Premium hydraulic hinges and silent closing mechanisms.",
-      image: "/softclose.jpg",
+      image: "/homepage/softclose.jpg",
     },
     {
       title: "Drawer Systems",
       category: "Furniture Fittings",
       description:
         "Slim tandem boxes and precision ball bearing slides.",
-      image: "/drawer.jpg",
+      image: "/homepage/drawer.jpg",
     },
     {
       title: "Industrial Adhesives",
       category: "Adhesives",
       description:
         "Authorized bonding solutions for wood and laminate.",
-      image: "/adhesive.jpg",
+      image: "/homepage/industrial.jpg",
     },
   ];
 
