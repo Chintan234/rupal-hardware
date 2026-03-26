@@ -19,10 +19,6 @@ export default function Distributor() {
             and industrial adhesives to manufacturers and contractors
             across the region.
           </p>
-
-          <button className="mt-8 btn-primary">
-            View Brands →
-          </button>
         </div>
 
         {/* Right Highlight Box */}
