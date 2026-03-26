@@ -13,7 +13,7 @@ export default function AboutPage() {
             About Rupal Hardware
           </h1>
           <p className="mt-6 max-w-2xl mx-auto opacity-90">
-            Providing high-performance industrial solutions and hardware
+            Providing high-performance woodworking adhesives and hardware fittings with unwavering commitment to quality and service
             excellence for over two decades.
           </p>
         </div>
@@ -29,14 +29,14 @@ export default function AboutPage() {
           <div>
             <h2 className="text-2xl font-bold">Our Story</h2>
             <p className="text-gray-600 mt-6">
-              Founded in the heart of the industrial sector, Rupal Hardware
+              Founded in the heart of the woodworking industry, Rupal Hardware
               began with a simple mission to bridge the gap between world-class
-              hardware manufacturing and local industrial needs.
+              hardware fittings and local woodworking needs.
             </p>
 
             <p className="text-gray-600 mt-4">
               Over 25 years, we have evolved into a premier B2B industrial
-              powerhouse serving clients across the country.
+              supplier serving clients across the city of Nashik.
             </p>
 
             <div className="grid grid-cols-2 gap-6 mt-8">
@@ -50,7 +50,7 @@ export default function AboutPage() {
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <h4 className="font-semibold">Reliability</h4>
                 <p className="text-sm text-gray-600 mt-2">
-                  99.8% on-time delivery track record.
+                  90% on-time delivery track record.
                 </p>
               </div>
             </div>
@@ -66,12 +66,12 @@ export default function AboutPage() {
             <p className="text-sm mt-2">Years Experience</p>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-orange-400">5000+</h3>
+            <h3 className="text-3xl font-bold text-orange-400">1000+</h3>
             <p className="text-sm mt-2">Products In Stock</p>
           </div>
           <div>
-            <h3 className="text-3xl font-bold text-orange-400">1000+</h3>
-            <p className="text-sm mt-2">Corporate Clients</p>
+            <h3 className="text-3xl font-bold text-orange-400">100+</h3>
+            <p className="text-sm mt-2"> Clients</p>
           </div>
           <div>
             <h3 className="text-3xl font-bold text-orange-400">24h</h3>
@@ -124,7 +124,7 @@ export default function AboutPage() {
           <div className="bg-gray-100 rounded-2xl p-10 grid md:grid-cols-3 gap-10 items-center">
             <div className="bg-white rounded-xl shadow-sm p-8 text-center">
               <h3 className="text-xl font-bold text-red-600">Pidilite</h3>
-              <p className="text-sm mt-2 text-gray-600">Official Distributor</p>
+              <p className="text-sm mt-2 text-gray-600">Authorized Distributor</p>
             </div>
 
             <div className="md:col-span-2">

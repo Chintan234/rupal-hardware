@@ -6,8 +6,8 @@ const kitchens = {
     location: "Nashik",
     testimonial: "Excellent finish and smooth hardware.",
     images: [
-      "/kitchens/jignesh/pic1.jpeg",
       "/kitchens/jignesh/pic2.jpeg",
+      "/kitchens/jignesh/pic1.jpeg",
       "/kitchens/jignesh/pic3.jpeg",
     ],
   },
@@ -33,10 +33,41 @@ const kitchens = {
       "/kitchens/vipul/frame4.jpeg",
     ],
   },
+
+  // ✅ NEW PROJECTS ADDED
+
+  "preeti-chaudhari": {
+    customer: "Preeti Chaudhari",
+    location: "Nashik",
+    testimonial: "Beautiful modular kitchen with smooth finishes.",
+    images: [
+      "/kitchens/preeti/preeti2.jpeg",
+      "/kitchens/preeti/preeti1.jpeg",
+    ],
+  },
+
+  "narendra-jain": {
+    customer: "Narendra Jain",
+    location: "Nashik",
+    testimonial: "Premium quality fittings and elegant design.",
+    images: [
+      "/kitchens/narendra/narendra1.jpeg",
+    ],
+  },
+
+  "mukul-apshankar": {
+    customer: "Mukul Apshankar",
+    location: "Nashik",
+    testimonial: "Highly satisfied with the finish and storage design.",
+    images: [
+      "/kitchens/mukul/mukul1.jpeg",
+      "/kitchens/mukul/mukul2.jpeg",
+      "/kitchens/mukul/mukul3.jpeg",
+    ],
+  },
 };
 
 export default async function ProjectDetail({ params }) {
-
   const { slug } = await params;
 
   const project = kitchens[slug];

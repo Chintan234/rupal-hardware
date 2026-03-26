@@ -5,7 +5,7 @@ export default function ProjectsPage() {
   const kitchens = [
     {
       slug: "jignesh-joshi",
-      image: "/kitchens/jignesh/pic1.jpeg",
+      image: "/kitchens/jignesh/pic2.jpeg",
       customer: "Jignesh Joshi",
       location: "Nashik"
     },
@@ -19,6 +19,27 @@ export default function ProjectsPage() {
       slug: "vipul-mehta",
       image: "/kitchens/vipul/frame1.jpeg",
       customer: "Vipul Mehta",
+      location: "Nashik"
+    },
+
+    // ✅ NEW KITCHENS ADDED
+
+    {
+      slug: "preeti-chaudhari",
+      image: "/kitchens/preeti/preeti2.jpeg",
+      customer: "Preeti Chaudhari",
+      location: "Nashik"
+    },
+    {
+      slug: "narendra-jain",
+      image: "/kitchens/narendra/narendra1.jpeg",
+      customer: "Narendra Jain",
+      location: "Nashik"
+    },
+    {
+      slug: "mukul-apshankar",
+      image: "/kitchens/mukul/mukul2.jpeg",
+      customer: "Mukul Apshankar",
       location: "Nashik"
     },
   ];

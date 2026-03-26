@@ -23,7 +23,6 @@ export default function ContactPage() {
       const data = await res.json();
 
       alert(data.message);
-
       e.target.reset();
     } catch (error) {
       alert("Something went wrong. Please try again.");
@@ -33,6 +32,7 @@ export default function ContactPage() {
   return (
     <main className="bg-gray-100 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-6">
+
         {/* Header */}
         <div className="mb-12">
           <p className="text-sm text-gray-500">Home / Contact & Inquiry</p>
@@ -45,12 +45,14 @@ export default function ContactPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-10">
-          {/* LEFT - Contact Form */}
+
+          {/* LEFT - CONTACT FORM */}
           <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-sm">
             <h2 className="text-xl font-semibold mb-8">Send Us a Message</h2>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
+
                 <div>
                   <label className="text-sm font-medium">Full Name *</label>
                   <input
@@ -72,6 +74,7 @@ export default function ContactPage() {
                     placeholder="+91 00000 00000"
                   />
                 </div>
+
               </div>
 
               <div>
@@ -105,21 +108,18 @@ export default function ContactPage() {
             </form>
           </div>
 
-          {/* RIGHT - Info Cards */}
+          {/* RIGHT SIDE */}
           <div className="space-y-6">
+
             {/* Direct Contact */}
             <div className="bg-white p-6 rounded-2xl shadow-sm">
               <h3 className="font-semibold mb-4">Direct Connection</h3>
 
               <p className="text-gray-600 text-sm">General Inquiry</p>
               <p className="text-sm mt-2">
-                <a
-                  href="tel:+919325829620"
-                  className="hover:text-black transition"
-                >
-                  +91 9325829620
-                </a>
+                <a href="tel:+919325829620">+91 9325829620</a>
               </p>
+
               <a
                 href="https://wa.me/919325829620"
                 target="_blank"
@@ -144,20 +144,89 @@ export default function ContactPage() {
 
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Monday – Friday</span>
-                <span>09:00 AM – 06:30 PM</span>
+                <span>10:00 AM – 07:00 PM</span>
               </div>
 
               <div className="flex justify-between text-sm text-gray-600 mt-2">
                 <span>Saturday</span>
-                <span>10:00 AM – 04:00 PM</span>
+                <span className="text-red-500">Office Closed</span>
               </div>
 
               <div className="flex justify-between text-sm text-gray-600 mt-2">
                 <span>Sunday</span>
-                <span className="text-red-500">Office Closed</span>
+                <span>10:00 AM – 07:00 PM</span>
               </div>
             </div>
+
+            {/* ✅ CERTIFICATIONS */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm">
+              <h3 className="font-semibold mb-4">Business Certifications</h3>
+
+              {/* GST NUMBER */}
+              <div className="mb-4">
+                <p className="text-xs text-gray-500 uppercase">GST Number</p>
+                <p className="font-semibold text-gray-800">
+                  27AHDPM5216G1ZI
+                </p>
+              </div>
+
+              <div className="space-y-4">
+
+                {/* GST */}
+                <div className="border rounded-lg p-4">
+                  <p className="text-sm font-medium mb-2">
+                    GST Registration Certificate
+                  </p>
+
+                  <div className="flex gap-4 text-sm">
+                    <a
+                      href="/certificates/gst.pdf"
+                      target="_blank"
+                      className="text-orange-500 hover:underline"
+                    >
+                      View PDF
+                    </a>
+
+                    <a
+                      href="/certificates/gst.pdf"
+                      download
+                      className="text-gray-600 hover:underline"
+                    >
+                      Download
+                    </a>
+                  </div>
+                </div>
+
+                {/* UDYAM */}
+                <div className="border rounded-lg p-4">
+                  <p className="text-sm font-medium mb-2">
+                    Udyam Registration Certificate
+                  </p>
+
+                  <div className="flex gap-4 text-sm">
+                    <a
+                      href="/certificates/udyam.pdf"
+                      target="_blank"
+                      className="text-orange-500 hover:underline"
+                    >
+                      View PDF
+                    </a>
+
+                    <a
+                      href="/certificates/udyam.pdf"
+                      download
+                      className="text-gray-600 hover:underline"
+                    >
+                      Download
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
     </main>

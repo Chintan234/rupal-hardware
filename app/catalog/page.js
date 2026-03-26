@@ -39,7 +39,7 @@ export default function CatalogPage() {
     },
 
     {
-      name: "Woodlok AG88 Marine",
+      name: "Woodlok AG88",
       image: "/catalog/woodlok_ag88.jpeg",
       tds: "/tds/ag88marine.pdf"
     },

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import AddToBasketButton from "@/components/AddToBasketButton";
 
 import { products } from "@/lib/products";
@@ -23,10 +24,16 @@ export default async function ProductDetailPage({ params }) {
 
         <div className="grid md:grid-cols-2 gap-14 mt-10">
 
-          {/* Product Image */}
+          {/* ✅ PRODUCT IMAGE */}
           <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
-            <div className="h-96 bg-gray-100 flex items-center justify-center rounded-lg text-gray-400">
-              Product Image
+            <div className="h-96 flex items-center justify-center">
+              <Image
+                src={product.image}
+                alt={product.title}
+                width={500}
+                height={400}
+                className="object-contain h-full w-full"
+              />
             </div>
           </div>
 
@@ -54,6 +61,17 @@ export default async function ProductDetailPage({ params }) {
               <p>Minimum Order Quantity: {product.minOrder}</p>
             </div>
 
+            {/* Status Badge */}
+            <p
+              className={`mt-4 inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                product.stockStatus === "In Stock"
+                  ? "bg-green-100 text-green-700"
+                  : "bg-orange-100 text-orange-700"
+              }`}
+            >
+              {product.stockStatus}
+            </p>
+
             {/* Quote Box */}
             <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm mt-8">
               <h3 className="font-semibold text-lg">
@@ -64,7 +82,7 @@ export default async function ProductDetailPage({ params }) {
                 Contact our team for pricing, bulk orders, and availability.
               </p>
 
-             <AddToBasketButton product={product} />
+              <AddToBasketButton product={product} />
             </div>
 
           </div>
