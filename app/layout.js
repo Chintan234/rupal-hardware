@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer"; // ✅ ADD THIS
 import { BasketProvider } from "@/lib/basket";
 
 const geistSans = Geist({
@@ -28,6 +29,9 @@ export default function RootLayout({ children }) {
           <Navbar />
 
           {children}
+
+          {/* ✅ FOOTER ADDED HERE */}
+          <Footer />
         </BasketProvider>
       </body>
     </html>
