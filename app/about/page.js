@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
     <main className="bg-gray-100">
+      
       {/* Hero Section */}
-      <section className="bg-blue-700 text-white py-20">
+      <section className="bg-slate-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="uppercase text-sm tracking-wide opacity-80">
             Our Journey
@@ -13,8 +17,7 @@ export default function AboutPage() {
             About Rupal Hardware
           </h1>
           <p className="mt-6 max-w-2xl mx-auto opacity-90">
-            Providing high-performance woodworking adhesives and hardware fittings with unwavering commitment to quality and service
-            excellence for over two decades.
+            Providing high-performance woodworking adhesives and hardware fittings with unwavering commitment to quality and service excellence for over two decades.
           </p>
         </div>
       </section>
@@ -22,10 +25,19 @@ export default function AboutPage() {
       {/* Story Section */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="bg-gray-200 h-80 rounded-xl flex items-center justify-center">
-            Illustration
+          
+          {/* Shop Image */}
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <Image
+              src="/shop.jpeg"
+              alt="Rupal Hardware Shop"
+              fill
+              className="object-cover hover:scale-105 transition duration-300"
+              priority
+            />
           </div>
 
+          {/* Story Content */}
           <div>
             <h2 className="text-2xl font-bold">Our Story</h2>
             <p className="text-gray-600 mt-6">
@@ -58,6 +70,44 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          
+          {/* Founder Image */}
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <Image
+              src="/samir.png"
+              alt="Founder of Rupal Hardware"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Founder Content */}
+          <div>
+            <h2 className="text-2xl font-bold">Meet The Founder</h2>
+
+            <p className="text-gray-600 mt-6">
+              With over 25 years of experience in the hardware industry, our founder
+              has built Rupal Hardware on the principles of trust, quality, and
+              long-term relationships.
+            </p>
+
+            <p className="text-gray-600 mt-4">
+              His vision has always been to provide reliable products and exceptional
+              service to every customer, making Rupal Hardware a trusted name in the industry.
+            </p>
+
+            <div className="mt-6">
+              <p className="font-semibold text-lg">Mr. Samir Mehta</p>
+              <p className="text-sm text-gray-500">Founder, Rupal Hardware</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="bg-slate-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-center">
@@ -71,7 +121,7 @@ export default function AboutPage() {
           </div>
           <div>
             <h3 className="text-3xl font-bold text-orange-400">100+</h3>
-            <p className="text-sm mt-2"> Clients</p>
+            <p className="text-sm mt-2">Clients</p>
           </div>
           <div>
             <h3 className="text-3xl font-bold text-orange-400">24h</h3>
@@ -89,8 +139,7 @@ export default function AboutPage() {
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <h4 className="font-semibold">Reliability</h4>
               <p className="text-sm text-gray-600 mt-3">
-                Consistently exceeding expectations through stable supply
-                chains.
+                Consistently exceeding expectations through stable supply chains.
               </p>
             </div>
 
@@ -178,6 +227,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
     </main>
   );
 }

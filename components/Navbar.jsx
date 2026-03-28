@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useBasket } from "@/lib/basket";
 
@@ -21,19 +22,17 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="bg-slate-900 text-white px-3 py-2 rounded-md text-sm font-semibold">
-            RH
-          </div>
-
-          <div className="leading-tight">
-            <h1 className="text-sm font-bold tracking-wide">RUPAL</h1>
-            <span className="text-xs text-orange-500 tracking-widest">
-              HARDWARE
-            </span>
-          </div>
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
+        
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/rupalfinal.png" 
+            alt="Rupal Hardware"
+            width={260}
+            height={100}
+            className="h-[64px] md:h-[76px] w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -87,7 +86,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-gray-700 text-xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
