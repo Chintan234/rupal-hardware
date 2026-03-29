@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -25,22 +26,26 @@ export default function ProductsPage() {
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) setAllProducts(data);
       })
-      .catch(() => {}); // fallback to static
+      .catch(() => {}); // fallback to static products
   }, []);
 
+  // Filter products by category and brand
   let filtered = allProducts.filter((p) => {
     if (category && p.category !== category) return false;
     if (brand && p.brand !== brand) return false;
     return true;
   });
 
+  // Sort products
   if (sort === "az") filtered = [...filtered].sort((a, b) => a.title.localeCompare(b.title));
   if (sort === "za") filtered = [...filtered].sort((a, b) => b.title.localeCompare(a.title));
 
+  // Pagination
   const start = (page - 1) * productsPerPage;
   const paginatedProducts = filtered.slice(start, start + productsPerPage);
   const totalPages = Math.ceil(filtered.length / productsPerPage);
 
+  // Unique brands and categories
   const brands = [...new Set(allProducts.map((p) => p.brand))];
   const categories = [...new Set(allProducts.map((p) => p.category))];
 
@@ -70,6 +75,7 @@ export default function ProductsPage() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-12 mt-12">
+          {/* Sidebar filters */}
           <div className="md:col-span-1 space-y-8">
             <div className="bg-white p-6 rounded-xl border shadow-sm">
               <h3 className="text-xs font-semibold uppercase text-gray-500 mb-5">Category</h3>
@@ -115,6 +121,7 @@ export default function ProductsPage() {
             </button>
           </div>
 
+          {/* Products Grid */}
           <div className="md:col-span-3">
             {paginatedProducts.length === 0 ? (
               <p className="text-gray-500 text-center mt-10">No products found.</p>
@@ -126,6 +133,7 @@ export default function ProductsPage() {
               </div>
             )}
 
+            {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-16">
                 <button
@@ -157,6 +165,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
+      {/* Floating Basket Button */}
       <div className="fixed bottom-6 right-6 z-40">
         <Link
           href="/enquiry"
