@@ -1,5 +1,7 @@
 "use client";
 
+import toast, { Toaster } from "react-hot-toast";
+
 export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,25 +14,64 @@ export default function ContactPage() {
     };
 
     try {
+      // 1. Save to DB
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      if (!res.ok) throw new Error("Failed");
 
-      alert(data.message);
+      // 2. Email admin
+      await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          templateId: process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID,
+          templateParams: {
+            from_name: formData.name,
+            phone: formData.phone,
+            from_email: formData.email,
+            company: "N/A",
+            message: formData.message,
+            products: "N/A (Contact Form)",
+            source: "Contact Form",
+          },
+        }),
+      });
+
+      // 3. Email user confirmation
+      if (formData.email) {
+        await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            templateId: process.env.NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID,
+            templateParams: {
+              to_name: formData.name,
+              to_email: formData.email,
+              phone: formData.phone,
+              company: "N/A",
+              message: formData.message,
+              products: "N/A",
+              source: "Contact Form",
+            },
+          }),
+        });
+      }
+
+      toast.success("Inquiry submitted! We'll be in touch soon.");
       e.target.reset();
     } catch (error) {
-      alert("Something went wrong. Please try again.");
+      console.error(error);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
   return (
     <main className="bg-gray-100 min-h-screen py-16">
+      <Toaster position="top-right" />
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}

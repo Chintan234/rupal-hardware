@@ -39,8 +39,8 @@ export default function ProductCard({
             alt={title}
             width={300}
             height={200}
-            className="w-full h-full object-cover hover:scale-105 transition duration-300"
-          />
+            className="w-full h-full object-cover hover:scale-105 transition duration-300" unoptimized
+          /> 
         </div>
 
         {/* Content */}

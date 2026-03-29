@@ -1,106 +1,67 @@
 import Link from "next/link";
+import { connectDB } from "@/lib/db";
+import Project from "@/lib/models/Project";
 
-export default function ProjectsPage() {
+// Static fallback data
+const staticKitchens = [
+  { slug: "jignesh-joshi", image: "/kitchens/jignesh/pic2.jpeg", customer: "Jignesh Joshi", location: "Nashik" },
+  { slug: "shailesh-salaskar", image: "/kitchens/shailesh/kitchen1.jpeg", customer: "Shailesh Salaskar", location: "Nashik" },
+  { slug: "vipul-mehta", image: "/kitchens/vipul/frame1.jpeg", customer: "Vipul Mehta", location: "Nashik" },
+  { slug: "preeti-chaudhari", image: "/kitchens/preeti/preeti2.jpeg", customer: "Preeti Chaudhari", location: "Nashik" },
+  { slug: "narendra-jain", image: "/kitchens/narendra/narendra1.jpeg", customer: "Narendra Jain", location: "Nashik" },
+  { slug: "mukul-apshankar", image: "/kitchens/mukul/mukul2.jpeg", customer: "Mukul Apshankar", location: "Nashik" },
+];
 
-  const kitchens = [
-    {
-      slug: "jignesh-joshi",
-      image: "/kitchens/jignesh/pic2.jpeg",
-      customer: "Jignesh Joshi",
-      location: "Nashik"
-    },
-    {
-      slug: "shailesh-salaskar",
-      image: "/kitchens/shailesh/kitchen1.jpeg",
-      customer: "Shailesh Salaskar",
-      location: "Nashik"
-    },
-    {
-      slug: "vipul-mehta",
-      image: "/kitchens/vipul/frame1.jpeg",
-      customer: "Vipul Mehta",
-      location: "Nashik"
-    },
+async function getProjects() {
+  try {
+    await connectDB();
+    const projects = await Project.find().sort({ createdAt: -1 }).lean();
+    if (projects.length > 0) {
+      return projects.map((p) => ({
+        slug: p.slug,
+        customer: p.customer,
+        location: p.location,
+        image: p.images?.[0] || "",
+        _id: p._id.toString(),
+      }));
+    }
+  } catch {}
+  return staticKitchens;
+}
 
-    // ✅ NEW KITCHENS ADDED
-
-    {
-      slug: "preeti-chaudhari",
-      image: "/kitchens/preeti/preeti2.jpeg",
-      customer: "Preeti Chaudhari",
-      location: "Nashik"
-    },
-    {
-      slug: "narendra-jain",
-      image: "/kitchens/narendra/narendra1.jpeg",
-      customer: "Narendra Jain",
-      location: "Nashik"
-    },
-    {
-      slug: "mukul-apshankar",
-      image: "/kitchens/mukul/mukul2.jpeg",
-      customer: "Mukul Apshankar",
-      location: "Nashik"
-    },
-  ];
+export default async function ProjectsPage() {
+  const kitchens = await getProjects();
 
   return (
     <main className="bg-gray-100 min-h-screen py-20">
-
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="text-center max-w-2xl mx-auto">
-
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Our Kitchen Projects
-          </h1>
-
+          <h1 className="text-3xl md:text-4xl font-bold">Our Kitchen Projects</h1>
           <p className="text-gray-600 mt-4">
             Explore modular kitchens we have designed for our customers.
           </p>
-
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-
           {kitchens.map((kitchen) => (
-
-            <Link
-              key={kitchen.slug}
-              href={`/projects/${kitchen.slug}`}
-              className="block"
-            >
-
+            <Link key={kitchen.slug} href={`/projects/${kitchen.slug}`} className="block">
               <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer">
-
                 <img
                   src={kitchen.image}
                   alt={kitchen.customer}
                   className="w-full h-72 object-cover"
                 />
-
                 <div className="p-6">
-
-                  <p className="font-semibold text-lg">
-                    {kitchen.customer}
-                  </p>
-
-                  <p className="text-sm text-gray-500">
-                    {kitchen.location}
-                  </p>
-
+                  <p className="font-semibold text-lg">{kitchen.customer}</p>
+                  <p className="text-sm text-gray-500">{kitchen.location}</p>
                 </div>
-
               </div>
-
             </Link>
-
           ))}
-
         </div>
 
       </div>
-
     </main>
   );
 }

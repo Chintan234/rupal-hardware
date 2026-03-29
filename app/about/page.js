@@ -34,6 +34,7 @@ export default function AboutPage() {
               fill
               className="object-cover hover:scale-105 transition duration-300"
               priority
+              unoptimized
             />
           </div>
 
@@ -81,6 +82,7 @@ export default function AboutPage() {
               alt="Founder of Rupal Hardware"
               fill
               className="object-cover"
+              unoptimized
             />
           </div>
 
