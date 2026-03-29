@@ -1,14 +1,14 @@
 "use client";
 export const dynamic = "force-dynamic";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { products as staticProducts } from "@/lib/products";
 import { useBasket } from "@/lib/basket";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const { basket } = useBasket();
   const searchParams = useSearchParams();
   const categoryFromURL = searchParams.get("category");
@@ -175,5 +175,13 @@ export default function ProductsPage() {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="bg-gray-100 min-h-screen py-16 flex items-center justify-center text-gray-500">Loading products...</div>}>
+      <ProductsContent />
+    </Suspense>
   );
 }
