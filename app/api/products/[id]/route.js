@@ -3,47 +3,38 @@ import Product from "@/lib/models/Product";
 import { isAdminAuthenticated } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
+// ✅ GET
 export async function GET(request, { params }) {
   await connectDB();
-  const product = await Product.findById(params.id);
-  if (!product) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+  const { id } = await params;   // ✅ FIX
+
+  const product = await Product.findById(id);
+  if (!product) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
   return NextResponse.json(product);
 }
 
-export async function PATCH(request, context) {
+// ✅ PATCH
+export async function PATCH(request, { params }) {
   try {
-    console.log("PATCH called"); 
-    console.log("context:", context);
-
     if (!isAdminAuthenticated(request)) {
-      console.log("Unauthorized access");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     await connectDB();
 
-    // Check what params really are
-    console.log("Before awaiting params:", context.params);
-
-    const params = await context.params; // unwrap if it's a promise
-    console.log("After awaiting params:", params);
-
-    const id = params?.id;
-    console.log("Resolved id:", id);
+    const { id } = await params;   // ✅ CLEAN (no need for context + logs)
 
     const body = await request.json();
-    console.log("Request body:", body);
 
-    if (!id) {
-      console.log("No ID found!");
-      return NextResponse.json({ error: "No ID provided" }, { status: 400 });
-    }
-
-    const updated = await Product.findByIdAndUpdate(id, body, { returnDocument: "after" });
-    console.log("Updated product:", updated);
+    const updated = await Product.findByIdAndUpdate(id, body, {
+      returnDocument: "after",
+    });
 
     if (!updated) {
-      console.log("Product not found");
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
@@ -54,7 +45,8 @@ export async function PATCH(request, context) {
   }
 }
 
-export async function DELETE(request, context) {
+// ✅ DELETE
+export async function DELETE(request, { params }) {
   try {
     if (!isAdminAuthenticated(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -62,9 +54,7 @@ export async function DELETE(request, context) {
 
     await connectDB();
 
-    const { id } = await context.params;
-
-    console.log("Deleting product ID:", id);
+    const { id } = await params;
 
     const deleted = await Product.findByIdAndDelete(id);
 
